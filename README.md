@@ -136,7 +136,9 @@ Vulnerabilități: repetarea cheii permite analiza frecvenței.
 
 ### 6. Vulnerabilități și atacuri clasice
 
-> \[!IMPORTANT] Cifrurile clasice nu mai oferă siguranță în contextul modern.
+{% hint style="danger" %}
+Cifrurile clasice nu mai oferă siguranță în contextul modern.
+{% endhint %}
 
 **Vulnerabilități:**
 
@@ -147,7 +149,7 @@ Vulnerabilități: repetarea cheii permite analiza frecvenței.
 
 * Kasiski Examination
 * Friedman Test
-* Frequency Analysis
+* Frequency analysis
 
 ***
 
@@ -178,7 +180,9 @@ Sunt **unidirecționale** și **deterministe**.
 
 #### Aplicații practice
 
-> \[!TIP] Hashingul este utilizat în securitate pentru verificare, autentificare și protejarea datelor.
+{% hint style="info" %}
+Hashingul este utilizat în securitate pentru verificare, autentificare și protejarea datelor.
+{% endhint %}
 
 * **Stocarea parolelor:** parolele sunt hash-uite și, eventual, “salted”.
 * **Verificarea integrității:** hash-ul fișierului confirmă că datele nu au fost alterate.
@@ -207,32 +211,211 @@ Scopul ei este **compatibilitatea**, nu securitatea.
 | **UTF-8 / ASCII**   | Codificare text standard.                     | Documente text              |
 | **Base32 / Base16** | Variante simplificate de Base64.              | Sisteme compacte            |
 
-> \[!TIP] Poți experimenta encodare și decodare cu instrumentul online [CyberChef](https://gchq.github.io/CyberChef/).
-
-***
+{% hint style="success" %}
+Poți experimenta encodare și decodare cu instrumentul online [CyberChef](https://gchq.github.io/CyberChef/).
+{% endhint %}
 
 ### 9. Introducere în Python pentru criptografie
 
-> \[!NOTE] Python oferă un ecosistem bogat pentru lucrul cu algoritmi criptografici și funcții hash.
+{% hint style="success" %}
+Python este un limbaj de programare interpretat, de nivel înalt, utilizat frecvent în domenii precum analiza datelor și securitatea informatică.
+{% endhint %}
 
-* Configurarea mediului Python.
-* Variabile și tipuri de date.
-* Instrucțiuni de bază.
-* Implementarea unui **cifru Caesar** simplu.
-* Explorarea librăriilor `hashlib`, `base64`, `cryptography`.
+***
 
-**Exemplu simplu – cifru Caesar:**
+#### 9.1 Ce este Python?
+
+Python este un limbaj open-source, portabil și multi-paradigmă. Oferă suport pentru programare procedurală, orientată pe obiecte și funcțională.&#x20;
+
+{% hint style="info" %}
+Python poate fi descărcat gratuit de la [python.org](https://www.python.org/downloads/). Pe Linux este, de obicei, instalat implicit.
+{% endhint %}
+
+***
+
+#### 9.2 Configurarea mediului
+
+1. Instalează Python 3.10+
+2. Creează un mediu virtual pentru izolarea dependențelor:
+
+```bash
+python3 -m venv .venv
+# macOS/Linux
+source .venv/bin/activate
+# Windows
+.venv\Scripts\activate
+```
+
+3. Instalează pachetele de bază:
+
+```bash
+pip install cryptography hashlib base64
+```
+
+{% hint style="info" %}
+Mediile virtuale previn conflictele între pachete și facilitează portabilitatea proiectelor.
+{% endhint %}
+
+***
+
+#### 9.3 Structura de bază a unui program Python
+
+Un fișier Python (`.py`) conține instrucțiuni, funcții și clase.
 
 ```python
-def caesar(text, shift):
-    result = ""
-    for ch in text:
-        if ch.isalpha():
-            offset = 65 if ch.isupper() else 97
-            result += chr((ord(ch) - offset + shift) % 26 + offset)
-        else:
-            result += ch
-    return result
+def salut():
+    print("Salut, lume!")
 
-print(caesar("HELLO", 3))  # KHOOR
+salut()
 ```
+
+Rezultat:
+
+```
+Salut, lume!
+```
+
+***
+
+#### 9.4 Variabile și tipuri de date
+
+Python utilizează tipuri dinamice — tipul variabilei este determinat automat la execuție.
+
+```python
+nume = "Alice"        # string
+varsta = 20           # int
+temperatura = 21.5    # float
+este_student = True   # bool
+```
+
+Verificarea tipului:
+
+```python
+print(type(nume))  # <class 'str'>
+```
+
+***
+
+#### 9.5 Structuri de control
+
+**Instrucțiuni condiționale**
+
+```python
+x = 10
+if x > 0:
+    print("Număr pozitiv")
+elif x == 0:
+    print("Zero")
+else:
+    print("Număr negativ")
+```
+
+**Bucle**
+
+```python
+for i in range(5):
+    print(i)
+
+while x > 0:
+    x -= 1
+```
+
+***
+
+#### 9.6 Funcții
+
+Funcțiile definesc blocuri de cod reutilizabile.
+
+```python
+def suma(a, b):
+    return a + b
+
+print(suma(3, 4))  # 7
+```
+
+***
+
+#### 9.7 Șiruri de caractere (strings)
+
+```python
+text = "criptografie"
+print(text.lower())   # criptografie
+print(text.upper())   # CRIPTOGRAFIE
+print(text[::-1])     # eifargoTPirc
+```
+
+Conversie între string și bytes:
+
+```python
+b = text.encode("utf-8")
+text_back = b.decode("utf-8")
+```
+
+***
+
+#### 9.8 Liste, tuple și dicționare
+
+**Liste (`list`)**
+
+Listele sunt structuri ordonate și modificabile.
+
+```python
+fructe = ["mere", "pere", "banane"]
+fructe.append("cirese")
+print(fructe[0])       # mere
+print(len(fructe))     # 4
+```
+
+**Tuple (`tuple`)**
+
+Tuplele sunt similare listelor, dar **imutabile** (nu pot fi modificate după creare).
+
+```python
+coordonate = (10.5, 20.3)
+x, y = coordonate
+print(f"x = {x}, y = {y}")
+```
+
+**Dicționare (`dict`)**
+
+Dicționarele conțin perechi cheie–valoare.\
+Sunt foarte utile în criptografie pentru mapări între litere, substituții sau tabele.
+
+```python
+alfabet = {"A": "D", "B": "E", "C": "F"}
+print(alfabet["B"])  # E
+
+# Parcurgere
+for litera, cod in alfabet.items():
+    print(litera, "->", cod)
+```
+
+***
+
+#### 9.9 Module utile pentru criptografie
+
+| Modul          | Scop                                 | Exemplu                               |
+| -------------- | ------------------------------------ | ------------------------------------- |
+| `hashlib`      | Funcții hash (MD5, SHA-1, SHA-256)   | `hashlib.sha256(b"data").hexdigest()` |
+| `base64`       | Encodare și decodare                 | `base64.b64encode(b"text")`           |
+| `cryptography` | Criptare simetrică și asimetrică     | `AESGCM`, `Fernet`                    |
+| `secrets`      | Generare de chei și valori aleatoare | `secrets.token_hex(16)`               |
+
+***
+
+#### 9.10 Exemplu practic: Hello Crypto
+
+```python
+import hashlib, base64
+
+text = "cryptoo"
+hash_value = hashlib.sha256(text.encode()).hexdigest()
+encoded = base64.b64encode(text.encode()).decode()
+
+print("Text original:", text)
+print("SHA-256:", hash_value)
+print("Base64:", encoded)
+```
+
+***
+
