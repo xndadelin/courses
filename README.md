@@ -65,7 +65,9 @@ Scopurile principale:
 
 ### 4. Metode criptografice
 
-> \[!TIP] Criptografia se clasifică în funcție de utilizarea cheilor și a algoritmilor.
+{% hint style="info" %}
+Criptografia se clasifică în funcție de utilizarea cheilor și a algoritmilor.
+{% endhint %}
 
 * **Criptografie simetrică** – folosește aceeași cheie pentru criptare și decriptare.
 * **Criptografie asimetrică** – folosește o pereche de chei (publică și privată).
@@ -93,9 +95,13 @@ C = (P + k) \mod 26 \\
 P = (C - k) \mod 26
 $$
 
-**Exemplu:**
-
-HELLO → KHOOR (cheie 3)
+| Literă | Cod | Calcul `(P + 3) mod 26` | Literă cifrată |
+| ------ | --- | ----------------------- | -------------- |
+| H      | 7   | 10                      | K              |
+| E      | 4   | 7                       | H              |
+| L      | 11  | 14                      | O              |
+| L      | 11  | 14                      | O              |
+| O      | 14  | 17                      | R              |
 
 {% hint style="warning" %}
 **Dezavantaj:** are doar 25 de chei posibile și poate fi spart prin "forță brută".
