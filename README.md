@@ -111,15 +111,86 @@ $$
 
 #### 5.2. Cifrul Vigenère
 
-Cifrul Vigenère este o formă de criptare polialfabetică.\
-Folosește o cheie alcătuită din litere, fiecare definind un decalaj diferit.
+Cifrul **Vigenère** este o metodă de **criptare polialfabetică**, ceea ce înseamnă că fiecare literă din textul clar este cifrată cu un alt alfabet, determinat de o **cheie formată din litere**. Fiecare literă a cheii definește un **decalaj diferit** aplicat asupra textului clar.
 
-**Exemplu:**
+Spre deosebire de cifrul Caesar (care folosește o singură deplasare pentru întreg textul), cifrul Vigenère aplică **deplasări diferite** pentru fiecare poziție, în funcție de literele cheii.
 
-CIPHER + KEY → MQLRI...
+1. Se scrie textul clar sub cheie, repetând cheia până acoperă tot textul.
+2. Fiecărei litere i se aplică o deplasare corespunzătoare literei din cheie (A = 0, B = 1, C = 2 etc.).
+3. Rezultatul este textul cifrat.
 
-Avantaj: mai rezistent decât Caesar.\
-Vulnerabilități: repetarea cheii permite analiza frecvenței.
+#### 5.3. Exemplu practic — Cifrul Vigenère
+
+**Text clar:**\
+DEFENDTHEEASTWALL
+
+**Cheie:**\
+FORTIFICATION
+
+***
+
+**1. Scriem cheia repetată sub textul clar**
+
+Text :   DEFENDTHEEASTWALL\
+Cheie: FORTIFICATIONFORT
+
+***
+
+**2. Cifrare pas cu pas**
+
+| Literă cheie | Deplasare | Literă clară | Literă cifrată |
+| ------------ | --------- | ------------ | -------------- |
+| F            | +5        | D            | I              |
+| O            | +14       | E            | S              |
+| R            | +17       | F            | W              |
+| T            | +19       | E            | X              |
+| I            | +8        | N            | Q              |
+| F            | +5        | D            | H              |
+| I            | +8        | T            | B              |
+| C            | +2        | H            | J              |
+| A            | +0        | E            | E              |
+| T            | +19       | E            | X              |
+| I            | +8        | A            | I              |
+| O            | +14       | S            | G              |
+| N            | +13       | T            | G              |
+| F            | +5        | W            | B              |
+| O            | +14       | A            | O              |
+| R            | +17       | L            | C              |
+| T            | +19       | L            | E              |
+
+***
+
+**3. Textul cifrat final**
+
+ISWXQHJBJEXIGGBOCE
+
+***
+
+**Observații**
+
+* Fiecare literă a cheii definește o deplasare diferită în alfabet (A=0, B=1, …, Z=25).
+* Când cheia se termină, se repetă automat.
+* Cifrul este mai sigur decât Caesar, dar dacă cheia e scurtă și se repetă, poate fi spart prin analiză a frecvențelor.
+
+```python
+def vigenere_encrypt(plaintext, key):
+    ciphertext = ""
+    key = key.upper()
+    key_index = 0
+
+    for caracter in plaintext:
+        if caracter.isalpha():
+            shift = ord(key[key_index % len(key)]) - ord('A')
+            if caracter.isupper():
+                ciphertext += chr((ord(caracter) - ord('A') + shift) % 26 + ord('A'))
+            else:
+                ciphertext += chr((ord(caracter) - ord('a') + shift) % 26 + ord('a'))
+            key_index += 1
+        else:
+            ciphertext += caracter
+    
+    return ciphertext
+```
 
 ***
 
@@ -127,10 +198,10 @@ Vulnerabilități: repetarea cheii permite analiza frecvenței.
 
 | Tip                     | Descriere                                         | Exemple                       |
 | ----------------------- | ------------------------------------------------- | ----------------------------- |
-| **Simple Substitution** | Înlocuiește fiecare literă cu alta fixă.          | A → M, B → Q                  |
-| **Playfair Cipher**     | Folosește o matrice 5×5 pentru perechi de litere. | Bazat pe digrame              |
+| **Simple substitution** | Înlocuiește fiecare literă cu alta fixă.          | A → M, B → Q                  |
+| **Playfair cipher**     | Folosește o matrice 5×5 pentru perechi de litere. | Bazat pe digrame              |
 | **Transpoziție**        | Reordonează caracterele.                          | Rail Fence, Scytale, Columnar |
-| **Beaufort Cipher**     | Bazat pe _Tabula Recta_ (Trithemius, 1508).       | Variante de Vigenère          |
+| **Beaufort cipher**     | Bazat pe _Tabula Recta_ (Trithemius, 1508).       | Variante de Vigenère          |
 
 ***
 
@@ -403,7 +474,7 @@ for litera, cod in alfabet.items():
 
 ***
 
-#### 9.10 Exemplu practic: Hello Crypto
+#### 9.10 Exemplu practic:&#x20;
 
 ```python
 import hashlib, base64
