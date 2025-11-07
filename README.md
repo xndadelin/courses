@@ -490,9 +490,9 @@ print("Base64:", encoded)
 
 ***
 
-* https://www.cs.ubbcluj.ro/\~istvanc/cursuri/Curs\_FP.pdf
-* https://gchq.github.io/CyberChef/
-* https://www.dcode.fr/en
-* https://docs.google.com/document/d/1ZL1i7\_XYEToZgFqKSu7NT9Xn1w2bm4VOvrekNFNswzA/edit?usp=sharing
-* https://crackstation.net/
-* https://docs.google.com/document/d/1OVFHTqp0YM74EcsXf7qucHJzwGKcgdz6/edit?usp=sharing\&ouid=100257728058593241325\&rtpof=true\&sd=true
+* [https://www.cs.ubbcluj.ro/\~istvanc/cursuri/Curs\_FP.pdf](https://www.cs.ubbcluj.ro/~istvanc/cursuri/Curs_FP.pdf)
+* [https://gchq.github.io/CyberChef/](https://gchq.github.io/CyberChef/)
+* [https://www.dcode.fr/en](https://www.dcode.fr/en)
+* [https://docs.google.com/document/d/1ZL1i7\_XYEToZgFqKSu7NT9Xn1w2bm4VOvrekNFNswzA/edit?usp=sharing](https://docs.google.com/document/d/1ZL1i7_XYEToZgFqKSu7NT9Xn1w2bm4VOvrekNFNswzA/edit?usp=sharing)
+* [https://crackstation.net/](https://crackstation.net/)
+* [https://docs.google.com/document/d/1OVFHTqp0YM74EcsXf7qucHJzwGKcgdz6/edit?usp=sharing\&ouid=100257728058593241325\&rtpof=true\&sd=true](https://docs.google.com/document/d/1OVFHTqp0YM74EcsXf7qucHJzwGKcgdz6/edit?usp=sharing\&ouid=100257728058593241325\&rtpof=true\&sd=true)
