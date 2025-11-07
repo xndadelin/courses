@@ -119,7 +119,7 @@ Spre deosebire de cifrul Caesar (care folosește o singură deplasare pentru în
 2. Fiecărei litere i se aplică o deplasare corespunzătoare literei din cheie (A = 0, B = 1, C = 2 etc.).
 3. Rezultatul este textul cifrat.
 
-#### 5.3. Exemplu practic — Cifrul Vigenère
+#### 5.3. Exemplu practic - Cifrul Vigenère
 
 **Text clar:**\
 DEFENDTHEEASTWALL
