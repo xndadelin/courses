@@ -103,6 +103,20 @@ $$
 | L      | 11  | 14                      | O              |
 | O      | 14  | 17                      | R              |
 
+```python
+def caesar_encrypt(plaintext=plaintext, key=key):
+    ciphertext = ""
+    for caracter in plaintext:
+        if caracter.isalpha():
+            if caracter.isupper():
+                ciphertext += chr((ord(caracter) - ord('A') + key) % 26 + ord('A'))
+            else:
+                ciphertext += chr((ord(caracter) - ord('a') + key) % 26 + ord('a'))
+        else:
+            ciphertext += caracter
+    return ciphertext
+```
+
 {% hint style="warning" %}
 **Dezavantaj:** are doar 25 de chei posibile și poate fi spart prin "forță brută".
 {% endhint %}
