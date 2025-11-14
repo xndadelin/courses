@@ -492,11 +492,24 @@ if (in_array($domain, $allowed_domains)) {
 
 #### Unelte specializate
 
-**SQLMap pentru SQL injection:** sqlmap -u "https://site.com/page?id=1" --dbs sqlmap -u "https://site.com/page?id=1" -D database --tables sqlmap -u "https://site.com/page?id=1" -D database -T users --dump
+```bash
+sqlmap -u "https://site.com/page?id=1" --dbs
+sqlmap -u "https://site.com/page?id=1" -D database --tables
+sqlmap -u "https://site.com/page?id=1" -D database -T users --dump
+```
 
-**Nikto pentru scanare server web:** nikto -h https://target.com -output results.html
+#### Nikto pentru scanare server web
 
-**Nmap pentru enumerare:** nmap -sV -sC target.com nmap --script http-enum target.com
+```bash
+nikto -h https://target.com -output results.html
+```
+
+#### Nmap pentru enumerare
+
+```bash
+nmap -sV -sC target.com
+nmap --script http-enum target.com
+```
 
 ## 6. Bune practici de securitate comprehensive
 
@@ -543,9 +556,16 @@ return ['value' => $input, 'errors' => $errors];
 
 #### Gestionarea autentificării și autorizării
 
-**Stocare parole:** // Hash cu salt $password\_hash = password\_hash($password, PASSWORD\_DEFAULT);
+{% code title="check.php" %}
+```php
+$password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-// Verificare if (password\_verify($input\_password, $stored\_hash)) { // Autentificare reușită }
+// Verificare parolă
+if (password_verify($input_password, $stored_hash)) {
+    // autentificare reușită
+}
+```
+{% endcode %}
 
 **Mecanisme de protecție:**
 
@@ -570,7 +590,16 @@ return ['value' => $input, 'errors' => $errors];
 * HSTS (HTTP Strict Transport Security)
 * Cipher suites sigure
 
-**Headere de securitate:** Strict-Transport-Security: max-age=31536000; includeSubDomains X-Content-Type-Options: nosniff X-Frame-Options: DENY Content-Security-Policy: default-src 'self' X-XSS-Protection: 1; mode=block
+{% code overflow="wrap" %}
+```
+Strict-Transport-Security: max-age=31536000; includeSubDomains 
+X-Content-Type-Options: nosniff 
+X-Frame-Options: DENY 
+Content-Security-Policy: default-src 'self' 
+X-XSS-Protection: 1; 
+mode=block
+```
+{% endcode %}
 
 #### Monitorizare, logging și răspuns la incidente
 
