@@ -2,6 +2,7 @@
 
 * [😃 Bun venit!](README.md)
 * [Criptografie și algoritmi de criptare, encodare sau hashing](<README (1).md>)
+* [Securitatea și exploatarea vulnerabilităților în aplicații web](securitatea-si-exploatarea-vulnerabilitatilor-in-aplicatii-web.md)
 * [Programa CJEXSV Securitate Cibernetică - 2024](programa-cjexsv-securitate-cibernetica-2024.md)
 * [🔑 Criptografie și algoritmi de criptare, encodare sau hashing](criptografie-si-algoritmi-de-criptare-encodare-sau-hashing-1/README.md)
   * [Crypto 101](criptografie-si-algoritmi-de-criptare-encodare-sau-hashing-1/crypto-101.md)
