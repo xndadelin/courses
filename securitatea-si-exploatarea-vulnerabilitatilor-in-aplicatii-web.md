@@ -527,34 +527,37 @@ nmap --script http-enum target.com
 * Validare bazată pe tipul așteptat
 * Sanitizare specifică contextului
 
-**Exemplu validare complexă:** function validateUserInput($input, $rules) { $errors = \[];
+**Exemplu validare complexă:**&#x20;
 
 ```
-if (isset($rules['min_length']) && strlen($input) < $rules['min_length']) {
-    $errors[] = "Input prea scurt";
-}
-
-if (isset($rules['pattern']) && !preg_match($rules['pattern'], $input)) {
-    $errors[] = "Format invalid";
-}
-
-if (isset($rules['type'])) {
-    switch($rules['type']) {
-        case 'email':
-            $input = filter_var($input, FILTER_SANITIZE_EMAIL);
-            break;
-        case 'string':
-            $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
-            break;
+function validateUserInput($input, $rules) {
+    $errors = [];
+    
+    if (isset($rules['min_length']) && strlen($input) < $rules['min_length']) {
+        $errors[] = "Input prea scurt";
     }
+    
+  
+    if (isset($rules['pattern']) && !preg_match($rules['pattern'], $input)) {
+        $errors[] = "Format invalid";
+    }
+    
+    if (isset($rules['type'])) {
+        switch($rules['type']) {
+            case 'email':
+                $input = filter_var($input, FILTER_SANITIZE_EMAIL);
+                break;
+            case 'string':
+                $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
+                break;
+        }
+    }
+    
+    return ['value' => $input, 'errors' => $errors];
 }
-
-return ['value' => $input, 'errors' => $errors];
 ```
 
-}
-
-#### Gestionarea autentificării și autorizării
+### Gestionarea autentificării și autorizării
 
 {% code title="check.php" %}
 ```php
@@ -581,7 +584,7 @@ if (password_verify($input_password, $stored_hash)) {
 * Biometrică
 * Hardware tokens
 
-#### Securizarea comunicării și a datelor
+### Securizarea comunicării și a datelor
 
 **Configurație HTTPS corectă:**
 
@@ -601,7 +604,7 @@ mode=block
 ```
 {% endcode %}
 
-#### Monitorizare, logging și răspuns la incidente
+### Monitorizare, logging și răspuns la incidente
 
 **Logging comprehensiv:**
 
