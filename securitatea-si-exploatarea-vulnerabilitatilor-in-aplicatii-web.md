@@ -428,7 +428,7 @@ if (in_array($domain, $allowed_domains)) {
 * Testare payload-uri XSS
 * Debugging aplicații
 
-**Application Tab:**
+**Application tab:**
 
 * Vizualizare și editare cookies
 * Inspectare localStorage/sessionStorage
@@ -528,7 +528,7 @@ nmap --script http-enum target.com
 
 **Exemplu validare complexă:**&#x20;
 
-```
+```php
 function validateUserInput($input, $rules) {
     $errors = [];
     
@@ -562,7 +562,6 @@ function validateUserInput($input, $rules) {
 ```php
 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-// Verificare parolă
 if (password_verify($input_password, $stored_hash)) {
     // autentificare reușită
 }
