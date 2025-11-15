@@ -149,7 +149,6 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        # Verificare credențiale
         if username == 'admin' and password == 'secret':
             session['logged_in'] = True
             session['username'] = username
@@ -441,7 +440,7 @@ if (in_array($domain, $allowed_domains)) {
 * Setare breakpoints
 * Editare cod în timp real
 
-### Burp Suite Community Edition - ghid de utilizare
+### Burp Suite Community Edition&#x20;
 
 **Setup proxy:**
 
